@@ -6,7 +6,7 @@ from sqlalchemy.sql.sqltypes import TIMESTAMP, VARCHAR
 import numpy as np
 import pandas as pd
 
-from iotfunctions.base import BaseTransformer
+from iotfunctions.base import BaseTransformer,BaseComplexAggregator
 from iotfunctions import ui
 
 logger = logging.getLogger(__name__)
@@ -17,12 +17,12 @@ logger = logging.getLogger(__name__)
 PACKAGE_URL = 'git+https://github.com/jeffdare/test-jeff@starter_package'
 
 
-class MultiplyByFactorJeff(BaseTransformer):
+class JeffAgg(BaseComplexAggregator):
     '''
     The docstring of the function will show as the function description in the UI.
     '''
 
-    def __init__(self, input_items, factor, output_items):
+    def __init__(self, input_items, output_items):
         # a function is expected to have at least one parameter that acts
         # as an input argument, e.g. "name" is an argument that represents the
         # name to be used in the greeting. It is an "input" as it is something
@@ -34,34 +34,49 @@ class MultiplyByFactorJeff(BaseTransformer):
         # deliver the functions outputs
 
         # always create an instance variable with the same name as your arguments
-
+        logging.debug("Entering init")
+        logging.debug(input_items)
         self.input_items = input_items
         self.output_items = output_items
-        self.factor = float(factor)
         super().__init__()
 
         # do not place any business logic in the __init__ method  # all business logic goes into the execute() method or methods called by the  # execute() method
 
     def execute(self, df):
+        logging.debug("Entering execute")
         df = df.copy()
         for i,input_item in enumerate(self.input_items):
             df[self.output_items[i]] = df[input_item] * self.factor
         return df
 
+     def aggregate(self, df):
+        logging.debug("Entering aggregate")
+        df = df.copy()
+        for i,input_item in enumerate(self.input_items):
+            df[self.output_items[i]] = df[input_item].agg("mean", axis="columns")
+        return df
+
+    def get_aggregation_method(self):
+        
+        #out = self.get_available_methods().get(self.aggregation_function,None)
+        #if out is None:
+        #    raise ValueError('Invalid aggregation function specified: %s'
+        #                     %self.aggregation_function)
+        logging.debug("Entering get_aggregation_method")
+        return aggregate
+
     @classmethod
     def build_ui(cls):
         #define arguments that behave as function inputs
+        logging.debug("build_ui")
+        logging.debug(cls)
         inputs = []
         inputs.append(ui.UIMultiItem(
                 name = 'input_items',
                 datatype=float,
-                description = "Data items adjust",
-                output_item = 'output_items',
+                description = "Max",
+                output_item = 'output_max',
                 is_output_datatype_derived = True)
-                      )
-        inputs.append(ui.UISingle(
-                name = 'factor',
-                datatype=float)
-                      )
+                      )        
         outputs = []
         return (inputs,outputs)
