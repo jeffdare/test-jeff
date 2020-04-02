@@ -40,17 +40,16 @@ This file will be written to the working directory.
 
 '''
 
-from custom.jefftest import MultiplyByFactorJeff
-fn = MultiplyByFactorJeff(
-    input_items = ['speed', 'travel_time'],
-    factor = '2',
-    output_items = ['adjusted_speed', 'adjusted_travel_time']
-              )
-fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
+from custom.jeffAgg import JeffAgg
+# fn = JeffAgg(
+#     input_items = ['baselinecount'],
+#     output_items = ['mean_baselinecount']
+#               )
+# fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
 
 # '''
 # Register function so that you can see it in the UI
 # '''
 
-# db.register_functions([MultiplyByFactorJeff])
+db.register_functions([JeffAgg])
 

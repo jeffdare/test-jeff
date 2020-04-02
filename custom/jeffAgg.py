@@ -46,14 +46,14 @@ class JeffAgg(BaseComplexAggregator):
         logging.debug("Entering execute")
         df = df.copy()
         for i,input_item in enumerate(self.input_items):
-            df[self.output_items[i]] = df[input_item] * self.factor
+            df[self.output_items[i]] = df[input_item].agg("mean")
         return df
 
-     def aggregate(self, df):
+    def aggregate(self, df):
         logging.debug("Entering aggregate")
         df = df.copy()
         for i,input_item in enumerate(self.input_items):
-            df[self.output_items[i]] = df[input_item].agg("mean", axis="columns")
+            df[self.output_items[i]] = df[input_item].agg("mean")
         return df
 
     def get_aggregation_method(self):
