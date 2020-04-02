@@ -22,7 +22,7 @@ class JeffAgg(BaseSimpleAggregator):
     The docstring of the function will show as the function description in the UI.
     '''
 
-    def __init__(self, input_items, output_items=None):
+    def __init__(self, input_items, output_items):
         # a function is expected to have at least one parameter that acts
         # as an input argument, e.g. "name" is an argument that represents the
         # name to be used in the greeting. It is an "input" as it is something
@@ -34,7 +34,7 @@ class JeffAgg(BaseSimpleAggregator):
         # deliver the functions outputs
 
         # always create an instance variable with the same name as your arguments
-        logging.debug("Entering init")
+        logging.debug("Entering init 1")
         logging.debug(input_items)
         self.input_items = input_items
         self.output_items = output_items
@@ -48,7 +48,7 @@ class JeffAgg(BaseSimpleAggregator):
         #    raise ValueError('Invalid aggregation function specified: %s'
         #                     %self.aggregation_function)
         logging.debug("Entering get_aggregation_method")
-        return aggregate
+        return self.aggregate()
 
     def execute(self, df):
         logging.debug("Entering execute")

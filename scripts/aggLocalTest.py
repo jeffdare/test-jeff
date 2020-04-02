@@ -41,16 +41,16 @@ This file will be written to the working directory.
 '''
 
 from custom.jeffAgg import JeffAgg
-# fn = JeffAgg(
-#     input_items = ['baselinecount'],
-#     output_items = ['mean_baselinecount']
-#               )
-# fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
+fn = JeffAgg(
+    input_items = ['baselinecount'],
+    output_items = ['mean_baselinecount']
+              )
+fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
 
 # '''
 # Register function so that you can see it in the UI
 # '''
 
-db.register_functions([JeffAgg])
+# db.register_functions([JeffAgg])
 # db.unregister_functions(['JeffAgg'])
 
