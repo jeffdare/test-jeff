@@ -22,7 +22,7 @@ class JeffAgg(BaseSimpleAggregator):
     The docstring of the function will show as the function description in the UI.
     '''
 
-    def __init__(self, input_items, output_items=None):
+    def __init__(self, input_items, mean=None):
         # a function is expected to have at least one parameter that acts
         # as an input argument, e.g. "name" is an argument that represents the
         # name to be used in the greeting. It is an "input" as it is something
@@ -37,7 +37,7 @@ class JeffAgg(BaseSimpleAggregator):
         logging.debug("Entering init 1")
         logging.debug(input_items)
         self.input_items = input_items
-        self.output_items = output_items
+        self.mean = mean
         super().__init__()
 
         # do not place any business logic in the __init__ method  # all business logic goes into the execute() method or methods called by the  # execute() method
@@ -54,14 +54,14 @@ class JeffAgg(BaseSimpleAggregator):
         logging.debug("Entering execute")
         df = df.copy()
         for i,input_item in enumerate(self.input_items):
-            df[self.output_items[i]] = df[input_item].agg("mean")
+            df[self.mean[i]] = df[input_item].agg("mean")
         return df
 
     def aggregate(self, df):
         logging.debug("Entering aggregate")
         df = df.copy()
         for i,input_item in enumerate(self.input_items):
-            df[self.output_items[i]] = df[input_item].agg("mean")
+            df[self.mean[i]] = df[input_item].agg("mean")
         return df
 
     @classmethod
@@ -74,7 +74,7 @@ class JeffAgg(BaseSimpleAggregator):
                 name = 'input_items',
                 datatype=float,
                 description = "Mean",
-                output_item = 'output_items',
+                output_item = 'mean',
                 is_output_datatype_derived = True)
                       )        
         outputs = []
