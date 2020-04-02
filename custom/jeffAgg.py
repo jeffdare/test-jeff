@@ -43,12 +43,7 @@ class JeffAgg(BaseSimpleAggregator):
         # do not place any business logic in the __init__ method  # all business logic goes into the execute() method or methods called by the  # execute() method
 
     def get_aggregation_method(self):
-        #out = self.get_available_methods().get(self.aggregation_function,None)
-        #if out is None:
-        #    raise ValueError('Invalid aggregation function specified: %s'
-        #                     %self.aggregation_function)
-        logging.debug("Entering get_aggregation_method")
-        return "aggregate"
+        return self.aggregate
 
     def execute(self, df):
         logging.debug("Entering execute")
