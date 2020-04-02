@@ -48,7 +48,7 @@ class JeffAgg(BaseSimpleAggregator):
         #    raise ValueError('Invalid aggregation function specified: %s'
         #                     %self.aggregation_function)
         logging.debug("Entering get_aggregation_method")
-        return self.aggregate()
+        return "aggregate"
 
     def execute(self, df):
         logging.debug("Entering execute")
