@@ -75,7 +75,7 @@ class JeffAgg(BaseComplexAggregator):
                 name = 'input_items',
                 datatype=float,
                 description = "Max",
-                output_item = 'output_max',
+                output_item = 'output_items',
                 is_output_datatype_derived = True)
                       )        
         outputs = []
