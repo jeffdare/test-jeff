@@ -6,7 +6,7 @@ from sqlalchemy.sql.sqltypes import TIMESTAMP, VARCHAR
 import numpy as np
 import pandas as pd
 
-from iotfunctions.base import BaseTransformer,BaseComplexAggregator
+from iotfunctions.base import BaseTransformer,BaseSimpleAggregator
 from iotfunctions import ui
 
 logger = logging.getLogger(__name__)
@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 PACKAGE_URL = 'git+https://github.com/jeffdare/test-jeff@starter_package'
 
 
-class JeffAgg(BaseComplexAggregator):
+class JeffAgg(BaseSimpleAggregator):
     '''
     The docstring of the function will show as the function description in the UI.
     '''
@@ -42,6 +42,14 @@ class JeffAgg(BaseComplexAggregator):
 
         # do not place any business logic in the __init__ method  # all business logic goes into the execute() method or methods called by the  # execute() method
 
+    def get_aggregation_method(self):
+        #out = self.get_available_methods().get(self.aggregation_function,None)
+        #if out is None:
+        #    raise ValueError('Invalid aggregation function specified: %s'
+        #                     %self.aggregation_function)
+        logging.debug("Entering get_aggregation_method")
+        return aggregate
+
     def execute(self, df):
         logging.debug("Entering execute")
         df = df.copy()
@@ -55,15 +63,6 @@ class JeffAgg(BaseComplexAggregator):
         for i,input_item in enumerate(self.input_items):
             df[self.output_items[i]] = df[input_item].agg("mean")
         return df
-
-    def get_aggregation_method(self):
-        
-        #out = self.get_available_methods().get(self.aggregation_function,None)
-        #if out is None:
-        #    raise ValueError('Invalid aggregation function specified: %s'
-        #                     %self.aggregation_function)
-        logging.debug("Entering get_aggregation_method")
-        return aggregate
 
     @classmethod
     def build_ui(cls):

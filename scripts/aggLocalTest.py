@@ -52,4 +52,5 @@ from custom.jeffAgg import JeffAgg
 # '''
 
 db.register_functions([JeffAgg])
+# db.unregister_functions(['JeffAgg'])
 
