@@ -22,7 +22,7 @@ class JeffAgg(BaseSimpleAggregator):
     The docstring of the function will show as the function description in the UI.
     '''
 
-    def __init__(self, input_items, output_items):
+    def __init__(self, input_items, output_items=None):
         # a function is expected to have at least one parameter that acts
         # as an input argument, e.g. "name" is an argument that represents the
         # name to be used in the greeting. It is an "input" as it is something
@@ -73,7 +73,7 @@ class JeffAgg(BaseSimpleAggregator):
         inputs.append(ui.UIMultiItem(
                 name = 'input_items',
                 datatype=float,
-                description = "Max",
+                description = "Mean",
                 output_item = 'output_items',
                 is_output_datatype_derived = True)
                       )        
