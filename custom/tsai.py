@@ -48,8 +48,8 @@ class Sdd(BaseComplexAggregator):
     @classmethod
     def build_ui(cls):
         inputs = []
-        inputs.append(UISingleItem(name='area_column', datatype=float, required=True, description='The area column.'))
-        inputs.append(UISingleItem(name='distance_column', datatype=float, required=True, description='The distance column.'))
+        inputs.append(ui.UISingleItem(name='area_column', datatype=float, required=True, description='The area column.'))
+        inputs.append(ui.UISingleItem(name='distance_column', datatype=float, required=True, description='The distance column.'))
         outputs = []
-        outputs.append(UIFunctionOutSingle(name='name', datatype=float, description='The distance between source and target points.'))
+        outputs.append(ui.UIFunctionOutSingle(name='name', datatype=float, description='The distance between source and target points.'))
         return (inputs, outputs)
