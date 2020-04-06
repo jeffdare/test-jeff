@@ -28,6 +28,7 @@ from iotfunctions import ui
 '''
 This module contains a number of sample functions. 
 '''
+PACKAGE_URL = 'git+https://github.com/jeffdare/test-jeff@starter_package'
 
 logger = logging.getLogger(__name__)
 class PIRNormalization(BaseAggregator):
