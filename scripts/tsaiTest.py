@@ -40,7 +40,7 @@ This file will be written to the working directory.
 
 '''
 
-from custom.tsai import Sdd
+from custom.preload import PIRNormalization
 # fn = Sdd(
 #     area_column = ['area_column'],
 #     distance_column = ['distance_column'],
@@ -51,7 +51,7 @@ from custom.tsai import Sdd
 # '''
 # Register function so that you can see it in the UI
 # '''
-db.unregister_functions(['Sdd'])
-# db.register_functions([Sdd])
+# db.unregister_functions(['PIRNormalization'])
+db.register_functions([PIRNormalization])
 
 
