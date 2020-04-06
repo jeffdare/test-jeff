@@ -40,17 +40,17 @@ This file will be written to the working directory.
 
 '''
 
-from custom.jeffAgg import JeffAgg
-# fn = JeffAgg(
-#     input_items = ['baselinecount'],
-#     output_items = ['mean_baselinecount']
-#               )
-# fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
+from custom.tsai import Sdd
+fn = Sdd(
+    input_items = ['area_column','distance_column'],
+    output_items = ['name']
+              )
+fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
 
 # '''
 # Register function so that you can see it in the UI
 # '''
 # db.unregister_functions(['JeffAgg'])
-db.register_functions([JeffAgg])
+# db.register_functions([JeffAgg])
 
 
