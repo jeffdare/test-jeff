@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 PACKAGE_URL = 'git+https://github.com/jeffdare/test-jeff@starter_package'
 
 
-class JeffAgg(BaseSimpleAggregator):
+class NewAgg(BaseSimpleAggregator):
     '''
     The docstring of the function will show as the function description in the UI.
     '''
@@ -68,10 +68,8 @@ class JeffAgg(BaseSimpleAggregator):
         inputs.append(ui.UISingleItem(
                 name = 'source',
                 datatype=float,
-                description = "Mean",
-                output_item = 'name',
-                is_output_datatype_derived = True)
+                description = "Mean")
                       )        
         outputs = []
-        # outputs.append(ui.UIFunctionOutSingle(name='name', datatype=float, description='The mean.'))
+        outputs.append(ui.UIFunctionOutSingle(name='name', datatype=float, description='The mean'))
         return (inputs,outputs)
