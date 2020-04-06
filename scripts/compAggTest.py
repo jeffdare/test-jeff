@@ -43,7 +43,7 @@ This file will be written to the working directory.
 from custom.jeffCompAgg import JeffCompAgg
 fn = JeffCompAgg(
     baselineColumn = ['baselinecount'],
-    sum = ['sum_baselinecount']
+    sum = ['sum']
               )
 fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
 
