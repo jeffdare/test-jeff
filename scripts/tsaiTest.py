@@ -51,7 +51,7 @@ from custom.preload import PIRNormalization
 # '''
 # Register function so that you can see it in the UI
 # '''
-db.unregister_functions(['PIRNormalization'])
-# db.register_functions([PIRNormalization])
+# db.unregister_functions(['PIRNormalization'])
+db.register_functions([PIRNormalization])
 
 

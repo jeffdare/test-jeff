@@ -22,7 +22,7 @@ class JeffAgg(BaseSimpleAggregator):
     The docstring of the function will show as the function description in the UI.
     '''
 
-    def __init__(self, input_items, mean=None):
+    def __init__(self, source, name=None):
         # a function is expected to have at least one parameter that acts
         # as an input argument, e.g. "name" is an argument that represents the
         # name to be used in the greeting. It is an "input" as it is something
@@ -35,9 +35,9 @@ class JeffAgg(BaseSimpleAggregator):
 
         # always create an instance variable with the same name as your arguments
         logging.debug("Entering init 1")
-        logging.debug(input_items)
-        self.input_items = input_items
-        self.mean = mean
+        logging.debug(source)
+        self.source = source
+        self.name = name
         super().__init__()
 
         # do not place any business logic in the __init__ method  # all business logic goes into the execute() method or methods called by the  # execute() method
@@ -48,15 +48,15 @@ class JeffAgg(BaseSimpleAggregator):
     def execute(self, df):
         logging.debug("Entering execute")
         df = df.copy()
-        for i,input_item in enumerate(self.input_items):
-            df[self.mean[i]] = df[input_item].agg("mean")
+        for i,input_item in enumerate(self.source):
+            df[self.name[i]] = df[input_item].agg("mean")
         return df
 
     def aggregate(self, df):
         logging.debug("Entering aggregate")
         df = df.copy()
-        for i,input_item in enumerate(self.input_items):
-            df[self.mean[i]] = df[input_item].agg("mean")
+        for i,input_item in enumerate(self.source):
+            df[self.name[i]] = df[input_item].agg("mean")
         return df
 
     @classmethod
@@ -66,11 +66,12 @@ class JeffAgg(BaseSimpleAggregator):
         logging.debug(cls)
         inputs = []
         inputs.append(ui.UIMultiItem(
-                name = 'input_items',
+                name = 'source',
                 datatype=float,
                 description = "Mean",
-                output_item = 'mean',
+                output_item = 'name',
                 is_output_datatype_derived = True)
                       )        
         outputs = []
+        outputs.append(ui.UIFunctionOutSingle(name='name', datatype=float, description='The mean.'))
         return (inputs,outputs)
