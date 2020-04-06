@@ -50,7 +50,7 @@ from custom.jeffAgg import JeffAgg
 # '''
 # Register function so that you can see it in the UI
 # '''
-# db.unregister_functions(['JeffAgg'])
-db.register_functions([JeffAgg])
+db.unregister_functions(['JeffAgg'])
+# db.register_functions([JeffAgg])
 
 
