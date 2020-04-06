@@ -42,9 +42,9 @@ class PIRNormalization(BaseAggregator):
     def _calc(self, df):
         sql="select MOTION from iot_anomalydetection_tbidtljeff where RCV_TIMESTAMP_UTC > '2020-04-06 05:00:00.000'"
         bdl = BaseDatabaseLookup(
-             lookup_table_name = 'IOT_PIR_MOTION',
-             lookup_keys= ['MOTION'],
-             lookup_items = ['MOTION'],
+             lookup_table_name = 'iot_anomalydetection_tbidtljeff',
+             lookup_keys= ['baselinecount'],
+             lookup_items = ['baselinecount'],
              sql=sql		 
              )
         pdf = bdl.execute(df=None)
