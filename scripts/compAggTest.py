@@ -41,9 +41,9 @@ This file will be written to the working directory.
 '''
 
 from custom.jeffCompAgg import JeffCompAgg
-fn = JeffAgg(
-    input_items = ['baselinecount'],
-    output_items = ['mean_baselinecount']
+fn = JeffCompAgg(
+    baselineColumn = ['baselinecount'],
+    sum = ['sum_baselinecount']
               )
 fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
 

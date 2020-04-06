@@ -47,8 +47,8 @@ class JeffCompAgg(BaseComplexAggregator):
 
     def execute(self, df=None, start_ts=None, end_ts=None, entities=None):
         logging.debug("Entering execute")
-        grouper = self.granularity.grouper
-        logger.debug('grouper=%s' % str(grouper))
+        # grouper = self.granularity.grouper
+        # logger.debug('grouper=%s' % str(grouper))
         df[self.sum] = df[self.baselineColumn].sum()
         return df
 
