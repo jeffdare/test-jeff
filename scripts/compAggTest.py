@@ -41,16 +41,16 @@ This file will be written to the working directory.
 '''
 
 from custom.jeffCompAgg import JeffCompAgg
-fn = JeffCompAgg(
-    baselineColumn = ['baselinecount'],
-    sum = ['sum']
-              )
-fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
+# fn = JeffCompAgg(
+#     baselineColumn = ['baselinecount'],
+#     sum = ['sum']
+#               )
+# fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
 
 # '''
 # Register function so that you can see it in the UI
 # '''
-# db.unregister_functions(['JeffCompAgg'])
+db.unregister_functions(['JeffCompAgg'])
 # db.register_functions([JeffCompAgg])
 
 

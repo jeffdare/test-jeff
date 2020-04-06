@@ -27,7 +27,7 @@ class JeffCompAgg(BaseComplexAggregator):
     requires_input_items = True
     produces_output_items = True
 
-    def __init__(self, baselineColumn, sum=None):
+    def __init__(self, baselineColumn, name=None):
         # a function is expected to have at least one parameter that acts
         # as an input argument, e.g. "name" is an argument that represents the
         # name to be used in the greeting. It is an "input" as it is something
@@ -42,7 +42,7 @@ class JeffCompAgg(BaseComplexAggregator):
         logging.debug("Entering init")
         logging.debug(baselineColumn)
         self.baselineColumn = baselineColumn
-        self.sum = sum
+        self.name = name
         super().__init__()
 
     def execute(self, df=None, start_ts=None, end_ts=None, entities=None):
@@ -60,5 +60,5 @@ class JeffCompAgg(BaseComplexAggregator):
         inputs = []
         inputs.append(ui.UISingleItem(name='baselineColumn', datatype=float, required=True, description='The baseline column.'))
         outputs = []
-        outputs.append(ui.UIFunctionOutSingle(name='sum', datatype=float, description='The sum.'))
+        outputs.append(ui.UIFunctionOutSingle(name='name', datatype=float, description='The sum.'))
         return (inputs, outputs)

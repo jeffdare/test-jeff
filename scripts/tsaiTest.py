@@ -51,7 +51,7 @@ from custom.tsai import Sdd
 # '''
 # Register function so that you can see it in the UI
 # '''
-# db.unregister_functions(['Sdd'])
-db.register_functions([Sdd])
+db.unregister_functions(['Sdd'])
+# db.register_functions([Sdd])
 
 
