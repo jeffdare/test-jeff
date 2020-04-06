@@ -68,10 +68,8 @@ class JeffAgg(BaseSimpleAggregator):
         inputs.append(ui.UISingleItem(
                 name = 'source',
                 datatype=float,
-                description = "Mean",
-                output_item = 'name',
-                is_output_datatype_derived = True)
+                description = "Mean")
                       )        
         outputs = []
-        # outputs.append(ui.UIFunctionOutSingle(name='name', datatype=float, description='The mean.'))
+        outputs.append(ui.UIFunctionOutSingle(name='name', datatype=float, description='The mean.'))
         return (inputs,outputs)
