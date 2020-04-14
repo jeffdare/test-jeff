@@ -81,10 +81,6 @@ def _generate_metadata(cls, metadata):
                        'category': 'AGGREGATOR', 'input': [_general_aggregator_input()], 'output': [_general_aggregator_output()]}
     common_metadata.update(metadata)
     return common_metadatadef _generate_metadata(cls, metadata):
-    common_metadata = {'name': cls.__name__, 'moduleAndTargetName': '%s.%s' % (cls.__module__, cls.__name__),
-                       'category': 'AGGREGATOR', 'input': [_general_aggregator_input()], 'output': [_general_aggregator_output()]}
-    common_metadata.update(metadata)
-    return common_metadata
 
 class SimpleAggregatorNeww(BaseSimpleAggregator):
 
