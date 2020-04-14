@@ -57,3 +57,25 @@ class JeffSimpleAggregator(BaseSimpleAggregator):
 
     def aggregate(self, x):
         return eval(self.expression)
+
+
+class SimpleAggregatorNeww(BaseSimpleAggregator):
+
+    @classmethod
+    def metadata(cls):
+        return _generate_metadata(cls, {'description': 'Create aggregation using expression on a data item.',
+                                        'input': [_general_aggregator_input(), {'name': 'expression',
+                                        'description': 'The expression. Use ${GROUP} to reference the current grain. \
+                                        All Pandas Series methods can be used on the grain. For example, ${GROUP}.max() - ${GROUP}.min().',
+                                        'type': 'CONSTANT', 'required': True, 'dataType': 'LITERAL'}],
+                                        'output': [_no_datatype_aggregator_output()], 'tags': ['EVENT', 'JUPYTER']})
+
+    def __init__(self, source=None, expression=None):
+        if expression is None or not isinstance(expression, str):
+            raise RuntimeError("argument expression must be provided and must be a string")
+
+        self.input_items = source
+        self.expression = expression
+
+    def execute(self, group):
+        return eval(re.sub(r"\$\{GROUP\}", r"group", self.expression))

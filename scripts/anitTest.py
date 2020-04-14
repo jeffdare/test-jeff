@@ -41,17 +41,17 @@ This file will be written to the working directory.
 '''
 
 from custom.ankit import JeffSimpleAggregator
-fn = JeffSimpleAggregator(
-        input_items = ['speed','flow'],
-        expression = 'x.max()',
-        output_items = ['max_speed','max_flow']
-        )
-fn.execute_local_test(db=db,db_schema=db_schema,generate_days=1,to_csv=True)
+# fn = JeffSimpleAggregator(
+#         input_items = ['speed','flow'],
+#         expression = 'x.max()',
+#         output_items = ['max_speed','max_flow']
+#         )
+# fn.execute_local_test(db=db, db_schema=db_schema,to_csv=True)
 
 # '''
 # Register function so that you can see it in the UI
 # '''
-# db.unregister_functions(['PIRNormalization'])
-# db.register_functions([JeffSimpleAggregator])
+# db.unregister_functions(['JeffSimpleAggregator'])
+db.register_functions([JeffSimpleAggregator])
 
 
