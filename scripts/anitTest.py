@@ -40,7 +40,7 @@ This file will be written to the working directory.
 
 '''
 
-from custom.ankit import JeffSimpleAggregator
+from custom.ankit import SimpleAggregatorNeww
 # fn = JeffSimpleAggregator(
 #         input_items = ['speed','flow'],
 #         expression = 'x.max()',
@@ -52,6 +52,6 @@ from custom.ankit import JeffSimpleAggregator
 # Register function so that you can see it in the UI
 # '''
 # db.unregister_functions(['JeffSimpleAggregator'])
-db.register_functions([JeffSimpleAggregator])
+db.register_functions([SimpleAggregatorNeww])
 
 
