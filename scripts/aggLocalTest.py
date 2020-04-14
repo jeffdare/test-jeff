@@ -40,7 +40,8 @@ This file will be written to the working directory.
 
 '''
 
-from custom.newAgg import NewAgg
+# from custom.newAgg import NewAgg
+from custom.jeffAgg import JeffAgg
 # fn = JeffAgg(
 #     input_items = ['baselinecount'],
 #     output_items = ['mean_baselinecount']
@@ -50,7 +51,9 @@ from custom.newAgg import NewAgg
 # '''
 # Register function so that you can see it in the UI
 # '''
+# db.unregister_functions(['NewAgg'])
+# db.register_functions([NewAgg])
 # db.unregister_functions(['JeffAgg'])
-db.register_functions([NewAgg])
+db.register_functions([JeffAgg])
 
 
