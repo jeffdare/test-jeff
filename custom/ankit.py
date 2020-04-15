@@ -93,12 +93,13 @@ class SimpleAggregatorNeww(BaseSimpleAggregator):
                                         'type': 'CONSTANT', 'required': True, 'dataType': 'LITERAL'}],
                                         'output': [_no_datatype_aggregator_output()], 'tags': ['EVENT', 'JUPYTER']})
 
-    def __init__(self, source=None, expression=None):
+    def __init__(self, source=None, expression=None, name=None):
         if expression is None or not isinstance(expression, str):
             raise RuntimeError("argument expression must be provided and must be a string")
 
         self.input_items = source
         self.expression = expression
+        self.name = name
 
     @classmethod
     def build_ui(cls):
@@ -106,7 +107,7 @@ class SimpleAggregatorNeww(BaseSimpleAggregator):
         inputs.append(UIMultiItem(name='source', datatype=None, description=('Choose the data items'
                                                                                   ' that you would like to'
                                                                                   ' aggregate'),
-                                  output_item='output_items', is_output_datatype_derived=True))
+                                  output_item='name', is_output_datatype_derived=True))
 
         inputs.append(UIExpression(name='expression', description='Paste in or type an AS expression'))
 
