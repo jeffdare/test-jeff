@@ -115,4 +115,4 @@ class SimpleAggregatorNeww(BaseSimpleAggregator):
         return (inputs, [])
 
     def execute(self, group):
-        return eval(re.sub(r"\$\{GROUP\}", r"group", self.expression))
+        return eval(self.expression)
