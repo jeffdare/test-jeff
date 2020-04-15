@@ -51,7 +51,7 @@ from custom.ankit import SimpleAggregatorNeww
 # '''
 # Register function so that you can see it in the UI
 # '''
-# db.unregister_functions(['SimpleAggregatorNeww'])
-db.register_functions([SimpleAggregatorNeww])
+db.unregister_functions(['SimpleAggregatorNeww'])
+# db.register_functions([SimpleAggregatorNeww])
 
 
